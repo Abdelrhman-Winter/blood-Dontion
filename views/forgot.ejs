@@ -1,0 +1,31 @@
+<body>
+  <!-- Forget Start -->
+  <div class="page-header">
+    <h1 class="page-title">Forget Password</h1>
+  </div>
+  <%- include('partials/messages') %>
+    <form action="/users/forgot" method="POST">
+      <input type="text" name="first_name" value="" class="d-none">
+      <p class="mb-5 text-center">Please enter your email address. You will receive an email message with instructions
+        on
+        how to reset your password.</p>
+      <div class="members-form">
+        <div class="mb-4">
+          <label for="lostpassword-email" class="form-label">Your Email</label>
+          <input name="email" type="email" class="form-control" id="lostpassword-email">
+        </div>
+        <div class="mb-3 text-center">
+          <button type="submit" class="btn btn-primary px-4 py-2">Send Email</button>
+        </div>
+        <p>
+          No Account? <a href="/users/signUp">Sign Up</a>
+        </p>
+        <p>
+
+          Remembered your Account?<a href="/users/signIn">sign In</a>
+        </p>
+      </div>
+
+    </form>
+
+    <!-- Forget End  -->

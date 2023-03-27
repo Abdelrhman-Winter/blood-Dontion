@@ -1,0 +1,160 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title> Blood Donation System </title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="/public/assets/img/title.jpg" rel="icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+
+  <!-- Template Main CSS File -->
+  <link href="/public/assets/css/sign.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="page" class="site">
+    <div class="container">
+      <div class="form-box">
+        <div class="progress">
+          <div class="logo"><a href="/"><span>BLOOD</span>DONATION</a></div>
+          <ul class="progress-steps">
+            <li class="step active">
+              <span>1</span>
+              <p>Personal<br><span>25 secs to complete</span></p>
+            </li>
+            <li class="step">
+              <span>2</span>
+              <p>Contact<br><span>60 secs to complete</span></p>
+            </li>
+            <li class="step">
+              <span>3</span>
+              <p>Security<br><span>30 secs to complete</span></p>
+            </li>
+          </ul>
+          <%- include('partials/messages') %>
+
+        </div>
+
+        <form action="/users/signUp" method="POST">
+
+          <div class="form-one form-step active">
+            <div class="bg-svg"></div>
+            <h2>Sign Up</h2>
+            <p>Enter your personal information correctly</p>
+            <div>
+              <label>First name</label>
+              <input type="text" placeholder="e.g.john" id="firstName" name="firstName"
+                value="<%= typeof firstName != 'undefined' ? firstName : '' %>">
+            </div>
+            <div>
+              <label> Last name</label>
+              <input type="text" placeholder="e.g.paul" id="lastName" name="lastName"
+                value="<%= typeof lastName != 'undefined' ? lastName : '' %>">
+            </div>
+            <div class="birth">
+              <label>Date of Birth</label>
+              <div class="grouping">
+                <input type="text" patter="[0-9]*" name="birthDay" id="birthDay" min="0" max="31" placeholder="DD"
+                  value="<%= typeof birthDay != 'undefined' ? birthDay : '' %>">
+                <input type="text" patter="[0-9]*" name="birthMonth" id="birthMonth" min="0" max="12" placeholder="MM"
+                  value="<%= typeof birthMonth != 'undefined' ? birthMonth : '' %>">
+                <input type="text" patter="[0-9]*" name="birthYear" id="birthYear" min="0" max="2050" placeholder="YYYY"
+                  value="<%= typeof birthYear != 'undefined' ? birthYear : '' %>">
+              </div>
+            </div>
+          </div>
+          <div class="form-tow form-step">
+            <div class="bg-svg"></div>
+            <h2>Contact</h2>
+            <div>
+              <label>Phone</label>
+              <input type="tel" id="phone" name="phone" class="form-control" placeholder="xxx-xxx-xxx-xx"
+                value="<%= typeof phone != 'undefined' ? phone : '' %>">
+            </div>
+            <div>
+              <label>Address</label>
+              <input type="text" placeholder="street Address" id="address" name="address" class="form-control"
+                placeholder="xxx-xxx-xxx-xx" value="<%= typeof address != 'undefined' ? address : '' %>">
+            </div>
+            <div>
+              <label>City</label>
+              <select name="city" id="city">
+                <option disabled selected value> -- select an City -- </option>
+                <option value="alexandria">Alexandria</option>
+                <option value="aswan">Aswan</option>
+                <option value="assiut">Assiut</option>
+                <option value="beheira">Beheira</option>
+                <option value="beni Suef">Beni Suef</option>
+                <option value="cairo">Cairo</option>
+                <option value="dakahlia">Dakahlia</option>
+                <option value="gharbia">Gharbia</option>
+                <option value="giza">Giza</option>
+              </select>
+            </div>
+            <div>
+              <label>Blood Type</label>
+              <select name="bloodType" id="bloodType">
+                <option disabled selected value> -- select an BloodType -- </option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+              </select>
+            </div>
+            <div>
+              <label>National ID </label>
+              <input type="nationalID" id="nationalID" name="nationalID" placeholder="nationalID"
+                value="<%= typeof nationalID != 'undefined' ? nationalID : '' %>">
+            </div>
+          </div>
+          <div class="form-three form-step">
+            <div class="bg-svg"></div>
+            <h2>Security</h2>
+            <div>
+              <label>Email</label>
+              <input type="email" id="email" name="email" placeholder="Email"
+                value="<%= typeof email != 'undefined' ? email : '' %>">
+            </div>
+
+            <div>
+              <label>password</label>
+              <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+                value="<%= typeof password != 'undefined' ? password : '' %>">
+            </div>
+            <div>
+              <input type="password" id="passwordConfirmation" name="passwordConfirmation" class="form-control"
+                placeholder="Confirm Password"
+                value="<%= typeof passwordConfirmation != 'undefined' ? passwordConfirmation : '' %>">
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" required checked>
+              <label>Receive our news latter and special offers </label>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button type="button" class="btn-prev" disabled>Back</button>
+            <button type="button" class="btn-next" disable>Next step </button>
+            <button type="submit" class="btn-submit" disable>Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="/public/assets/js/sign.js"></script>
+</body>
+
+</html>

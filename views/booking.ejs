@@ -1,0 +1,240 @@
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex justify-cntent-center align-items-center">
+  <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+
+    <!-- Slide 1 -->
+    <div class="carousel-item active">
+      <div class="carousel-container">
+        <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Donor</span></h2>
+        <p class="animate__animated animate__fadeInUp">Blood donation is a vital part of worldwide healthcare. It
+          relates to blood transfusion as a life-sustaining and life-saving procedure as well as a form of therapeutic
+          phlebotomy as a primary medical intervention. Over one hundred million units of blood are donated each year
+          throughout the world.</p>
+        <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="carousel-item">
+      <div class="carousel-container">
+        <h2 class="animate__animated animate__fadeInDown">Whole blood donation</h2>
+        <p class="animate__animated animate__fadeInUp">Whole blood donation is the most common type of blood donation.
+          During this donation, you donate about a pint (about half a liter) of whole blood. The blood is then
+          separated
+          into its components — red cells, plasma and sometimes platelets . . .</p>
+        <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="carousel-item">
+      <div class="carousel-container">
+        <h2 class="animate__animated animate__fadeInDown">Overview</h2>
+        <p class="animate__animated animate__fadeInUp">Blood donation is a voluntary procedure that can help save
+          lives.
+          There are several types of blood donation. Each type helps meet different medical needs</p>
+        <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+      </div>
+    </div>
+
+    <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+    </a>
+
+    <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+    </a>
+
+
+
+  </div>
+</section><!-- End Hero -->
+
+<!-- ======= Recent Blog Posts Section ======= -->
+<section id="hospital" class="hospital">
+
+  <div class="container" data-aos="fade-up">
+    <div class="row">
+
+      <div class="col-lg-4">
+        <div class="post-box">
+          <div class="post-img"><img src="/public/assets/img/hospital/7.jpg" class="img-fluid" alt=""></div>
+          <span class="post-date">Tue, September 15</span>
+          <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis voluptatem consequuntur sit</h3>
+          <a href="#appointment" class="readmore stretched-link mt-auto"><span>Donate Now</span><i
+              class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="post-box">
+          <div class="post-img"><img src="/public/assets/img/hospital/7.jpg" class="img-fluid" alt=""></div>
+          <span class="post-date">Fri, August 28</span>
+          <h3 class="post-title">Et repellendus molestiae qui est sed omnis voluptates magnam</h3>
+          <a href="#appointment" class="readmore stretched-link mt-auto"><span>Donate Now</span><i
+              class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="post-box">
+          <div class="post-img"><img src="/public/assets/img/hospital/16.jpeg" class="img-fluid" alt=""></div>
+          <span class="post-date">Mon, July 11</span>
+          <h3 class="post-title">Quia assumenda est et veritatis aut quae</h3>
+          <a href="#appointment" class="readmore stretched-link mt-auto"><span>Donate Now</span><i
+              class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section><!-- End Recent Blog Posts Section -->
+<!-- ======= Donate Blood ======= -->
+<section id="appointment" class="appointment section-space-bottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="appointment-area">
+          <div class="row neutral-row">
+            <div class="col-lg-6 row-item">
+              <div class="appointment-area__single appointment-area__content">
+                <h4>Current Blood</h4>
+                <ul>
+                  <li><i class="bx bxs-heart-circle"></i>B+ Washington, USA (13.02.2022)</li>
+                  <li><i class="bx bxs-heart-circle"></i>O- Washington, USA (13.02.2022)</li>
+                  <li><i class="bx bxs-heart-circle"></i>B- Washington, USA (13.02.2022)</li>
+                  <li><i class="bx bxs-heart-circle"></i>AB- Washington, USA (13.02.2022)</li>
+                  <li><i class="bx bxs-heart-circle"></i>O+ Washington, USA (13.02.2022)</li>
+                  <li><i class="bx bxs-heart-circle"></i>B+ Washington, USA (13.02.2022)</li>
+                  <li><i class="bx bxs-heart-circle"></i>AB+ Washington, USA (13.02.2022)</li>
+                  <li><i class="bx bxs-heart-circle"></i>B+ Washington, USA (13.02.2022)</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-6 row-item">
+              <div class="appointment-area__single appointment-area__form">
+                <h4>Request Appointment Here</h4>
+                <%- include('partials/messages') %>
+
+                  <form action="/users/booking" method="POST" name="appointmentForm">
+
+                    <div class="input-field">
+                      <label> Hospital </label>
+                      <div class="custom-select">
+                        <select name="location" id="location">
+                          <option disabled selected value> -- select an loction -- </option>
+                          <option value="loction1"> loction1 </option>
+                          <option value="loction2"> loction2 </option>
+                          <option value="loction3"> loction3 </option>
+                          <option value="loction4"> loction4 </option>
+                          <option value="loction5"> loction5 </option>
+                          <option value="loction6"> loction6 </option>
+                          <option value="loction7"> loction7 </option>
+                          <option value="loction8"> loction8 </option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="input">
+                      <textarea id="additionalInfo" name="additionalInfo" cols="30" rows="10"
+                        placeholder="Your Message"></textarea>
+                    </div>
+                    <button type="submit" class="button button--tertiary button--effect"> Make an Appointment
+                    </button>
+                  </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ======= Footer ======= -->
+<footer id="footer">
+
+  <!-- <div class="footer-newsletter">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <h4>Our Newsletter</h4>
+          <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+        </div>
+        <div class="col-lg-6">
+          <form action="" method="post">
+            <input type="email" name="email"><input type="submit" value="Subscribe">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-3 col-md-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><i class="bi bi-chevron-right"></i> <a href="/">Home</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="/users/aboutUs">About us</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="/users/booking">Donate</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="/users/services">Services</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Blood Donation</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Health Check</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Blood Bank</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Donate Process</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-contact">
+          <h4>Contact Us</h4>
+          <p>
+            A108 Cairo Street <br>
+            Helwan, NY 7<br>
+            Egypt <br><br>
+            <strong>Phone:</strong> +2 01143363912<br>
+            <strong>Email:</strong> Example@gmail.com<br>
+          </p>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-info">
+          <h3>About Anyar</h3>
+          <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies
+            darta donna mare fermentum iaculis eu non diam phasellus.</p>
+          <div class="social-links mt-3">
+            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<div id="preloader"></div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+    class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="/public/assets/vendor/aos/aos.js"></script>
+<script src="/public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/public/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/public/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/public/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="/public/assets/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

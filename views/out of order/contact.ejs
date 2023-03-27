@@ -1,0 +1,71 @@
+<head>
+  <title>Contact Us</title>
+</head>
+<header class="p-3 mb-3 border-bottom">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+          <use xlink:href="#bootstrap" />
+        </svg>
+      </a>
+
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="/dashboard" class="nav-link px-2 link-dark">Dashboard</a></li>
+        <li><a href="/users/booking" class="nav-link px-2 link-dark">Requset</a></li>
+        <li><a href="/users/contact" class="nav-link px-2 link-dark">Contact Us</a></li>
+      </ul>
+
+
+      <div>
+        <a href="/users/profile" aria-expanded="false">
+          <img src="https://via.placeholder.com/300x300.png?text=Test+Image
+          " alt="mdo" width="32" height="32" class="rounded-circle" />
+        </a>
+
+      </div>
+    </div>
+  </div>
+</header>
+
+<body>
+  <h1>Contact Us</h1>
+  <% if (typeof errors !='undefined' && Array.isArray(errors)) { %>
+    <% errors.forEach(error=> { %>
+      <div class="alert alert-danger" role="alert">
+        <%= error.msg %>
+      </div>
+      <% }) %>
+        <% } %>
+          <% if (success_msg) { %>
+            <div class="alert alert-success" role="alert">
+              <%= success_msg %>
+            </div>
+            <% } %>
+              <% if (error_msg) { %>
+                <div class="alert alert-danger" role="alert">
+                  <%= error_msg %>
+                </div>
+                <% } %>
+                  <% if (error) { %>
+                    <div class="alert alert-danger" role="alert">
+                      <%= error %>
+                    </div>
+                    <% } %>
+                      <form method="POST" action="/users/contact">
+
+                        <div class="form-group">
+                          <label for="name">Name</label>
+                          <input type="text" name="name" class="form-control" id="name" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="email">Email address</label>
+                          <input type="email" name="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="message">Message</label>
+                          <textarea name="message" class="form-control" id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send</button>
+                      </form>
+</body>

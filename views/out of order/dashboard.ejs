@@ -1,0 +1,55 @@
+<head>
+  <!-- <link rel="stylesheet" type="text/css" href="/public/stylesheets/dashboard.css"> -->
+</head>
+
+<!-- <header class="p-3 mb-3 border-bottom">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+          <use xlink:href="#bootstrap" />
+        </svg>
+      </a>
+
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="/dashboard" class="nav-link px-2 link-dark">Dashboard</a></li>
+        <li><a href="/users/booking" class="nav-link px-2 link-dark">Requset</a></li>
+        <li><a href="/users/contact" class="nav-link px-2 link-dark">Contact Us</a></li>
+      </ul>
+
+
+      <div>
+        <a href="/users/profile" aria-expanded="false">
+          <img src="https://via.placeholder.com/300x300.png?text=Test+Image
+          " alt="mdo" width="32" height="32" class="rounded-circle" />
+        </a>
+
+      </div>
+    </div>
+  </div>
+</header> -->
+
+
+<h1 class="mt-4">Dashboard</h1>
+
+<label for="file-input">
+  <img src="https://via.placeholder.com/300x300.png?text=UPLOAD" style="pointer-events: none" />
+</label>
+<form action="/users/dashboard" method="POST" enctype="multipart/form-data">
+  <label for="img" class="btn btn-info" style="margin-left: 90px;margin-top: 10px; ">Try me</label>
+  <input type="file" name="file" id="img">
+  <input type="submit">
+</form>
+<p class="lead mb-3">Welcome <%= name %>
+</p>
+<a href="/users/logout" class="btn btn-primary">Logout</a>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $("#img").on("change", function () {
+      $("#upload-form").submit();
+    });
+  });
+</script>

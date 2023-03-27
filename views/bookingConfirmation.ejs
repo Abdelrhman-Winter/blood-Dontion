@@ -1,0 +1,32 @@
+<header>
+  <style>
+    body {
+      background: -webkit-linear-gradient(top, #111111, #e4052a);
+
+    }
+
+    .my-4 {
+      color: #ffffff;
+    }
+  </style>
+</header>
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="col-md-4">
+
+    <% include('partials/messages') %>
+
+      <main class="container">
+        <h2 class="my-4">Booking Details:</h2>
+
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Account Name: <%= accountName %>
+            </h5>
+            <p class="card-text">Location: <%= location %>
+            </p>
+            <p class="card-text">Additional Info: <%= additionalInfo %>
+            </p>
+          </div>
+        </div>
+  </div>
+</div>

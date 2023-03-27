@@ -1,0 +1,61 @@
+<header class="p-3 mb-3 border-bottom">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+          <use xlink:href="#bootstrap" />
+        </svg>
+      </a>
+
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="/dashboard" class="nav-link px-2 link-dark">Dashboard</a></li>
+        <li><a href="/users/booking" class="nav-link px-2 link-dark">Request</a></li>
+        <li><a href="/users/contact" class="nav-link px-2 link-dark">Contact Us</a></li>
+      </ul>
+
+      <div>
+        <a href="/users/profile" aria-expanded="false">
+          <img src="https://via.placeholder.com/300x300.png?text=Test+Image" alt="Profile Image" width="32" height="32"
+            class="rounded-circle" />
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="col-md-4">
+  <%- include('partials/messages') %>
+    <form action="/users/booking" method="POST">
+      <label for="bookingDate">bookingDate:</label>
+      <input type="date" id="bookingDate" name="bookingDate" required class="form-control"
+        value="<%= typeof bookingDate != 'undefined' ? bookingDate : '' %>">
+
+
+      <div class="form-group">
+        <label for="location">Location</label>
+        <div>
+          <label>
+            <input type="radio" id="location1" name="location" value="location1" required>
+            Location 1
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type="radio" id="location2" name="location" value="location2" required>
+            Location 2
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type="radio" id="location3" name="location" value="location3" required>
+            Location 3
+          </label>
+        </div>
+        <!-- Add more options here as needed -->
+      </div>
+
+      <label for="additionalInfo">Additional Information:</label>
+      <textarea id="additionalInfo" name="additionalInfo" class="form-control"></textarea>
+
+      <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+</div>

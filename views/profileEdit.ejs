@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title> Blood Donation System </title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/title.jpg" rel="icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <section style="background-color: #eee;">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col">
+          <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+            <ol class="breadcrumb mb-0">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item"><a href="/users/profile">Profile</a></li>
+              <li class="breadcrumb-item active" aria-current="page">ProfileEditing</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+      <%- include('partials/messages') %>
+        <form action="/users/profileEdit" method="POST">
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="card mb-4 ">
+                <div class="card-body">
+                  <div class="row mb-4">
+                    <h5 class="card-title mb-5">Edit profile</h5>
+                    <div class="col-sm-3">
+                      <p class="mb-0">FirstName</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="firstName" name="firstName"
+                        value="<%= user.firstName %>">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row mb-4">
+                    <div class="col-sm-3">
+                      <p class="mb-0">LastName</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="lastName" name="lastName"
+                        value="<%= user.lastName %>">
+                    </div>
+                  </div>
+                  <hr>
+                  <!-- <div class="row mb-4">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Birthday</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <input name="Name" type="text" class="form-control" id="fullName" value="19/2/2001">
+                    </div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col-sm-3">
+                      <p class="mb-0">BirthMonth</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <input name="Name" type="text" class="form-control" id="fullName" value="19/2/2001">
+                    </div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col-sm-3">
+                      <p class="mb-0">BirthYear</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <input name="Name" type="text" class="form-control" id="fullName" value="19/2/2001">
+                    </div>
+                  </div>
+                  <hr> -->
+                  <div class="row mb-4">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Phone</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <input type="phone" class="form-control" id="phone" name="phone" value="<%= user.phone %>">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row mb-4">
+                    <div class="col-sm-3">
+                      <p class="mb-0">City</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <select name="city" id="city" class="form-control">
+                        <option disabled selected value> -- select an City -- </option>
+                        <option value="alexandria">Alexandria</option>
+                        <option value="aswan">Aswan</option>
+                        <option value="assiut">Assiut</option>
+                        <option value="beheira">Beheira</option>
+                        <option value="beni Suef">Beni Suef</option>
+                        <option value="cairo">Cairo</option>
+                        <option value="dakahlia">Dakahlia</option>
+                        <option value="gharbia">Gharbia</option>
+                        <option value="giza">Giza</option>
+                      </select>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row mb-4">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Address</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <input name="address" type="text" class="form-control" id="address" value="<%= user.address %>">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row mb-4">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Blood Type</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <select name="bloodType" id="bloodType" class="form-control">
+                        <option disabled selected value> -- select an BloodType -- </option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                      </select>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row mb-4">
+                    <div class="col-sm-3">
+                      <p class="mb-0">National ID</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <input type="nationalID" class="form-control" id="nationalID" name="nationalID"
+                        value="<%= user.nationalID %>">
+                    </div>
+                  </div>
+                  <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+    </div>
+  </section>
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
