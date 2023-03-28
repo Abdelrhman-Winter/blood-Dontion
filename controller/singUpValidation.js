@@ -36,7 +36,7 @@ function registerHadling(req, res) {
     req.flash(
       "error_msg",
       `Please check the following fields:
-       ${errorMessageString}`
+      ${errorMessageString}`
     );
     //Send content with errors
     res.render("signUp", {
@@ -54,6 +54,7 @@ function registerHadling(req, res) {
       birthYear,
       bloodType,
       error_msg: req.flash("error_msg"),
+      layout: false,
     });
   } else {
     const newUser = new User({
