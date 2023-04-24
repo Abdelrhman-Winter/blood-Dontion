@@ -7,12 +7,14 @@ const reset = require("../controller/resetController");
 const profilEditor = require("../controller/profileEdit");
 const path = require("path");
 const User = require("../models/userModel");
+const HostAdmin = require("../models/hostAdminModel");
 const {
   signupValidator,
   EditingValidator,
   passwordValidator,
   contactValidator,
   bookingValidator,
+  adminValidator,
   sanitizeName,
   sanitizeEmail,
   sanitizePassword,
@@ -27,7 +29,7 @@ const {
   handleBookingConfirmation,
 } = require("../controller/bookingController");
 const { ensureAuthenticated } = require("../middleware/auth");
-
+const adminCreationTest = require("../controller/adminTest");
 //Login page
 
 router.get("/signIn", (req, res) => {
@@ -40,15 +42,15 @@ router.get("/signIn", (req, res) => {
   res.render("signIn");
 });
 
-router.get("/login", (req, res) => {
-  if (req.isAuthenticated()) {
-    console.log(req.isAuthenticated());
+// router.get("/login", (req, res) => {
+//   if (req.isAuthenticated()) {
+//     console.log(req.isAuthenticated());
 
-    // User is already authenticated, redirect to
-    return res.redirect("/");
-  }
-  res.render("Login");
-});
+//     // User is already authenticated, redirect to
+//     return res.redirect("/");
+//   }
+//   res.render("Login");
+// });
 
 //Register page
 router.get("/signUp", (req, res) => res.render("SignUp", { layout: false }));
@@ -111,6 +113,9 @@ router.get("/services", (req, res) => res.render("services"));
 //AboutUs page
 router.get("/servicesDetails", (req, res) => res.render("servicesDetails"));
 
+//admin test
+router.get("/admin", (req, res) => res.render("admin"));
+
 //Register handle   =======================================
 
 router.post(
@@ -130,7 +135,7 @@ router.post("/signIn", (req, res, next) => {
     // User is already authenticated, redirect to
     return res.redirect("/");
   }
-  console.log(req.isAuthenticated());
+  console.log(req.isAuthenticated() && req.user instanceof HostAdmin);
   // User is not authenticated, use passport to authenticate
   passport.authenticate("local", {
     successRedirect: "/",
@@ -138,6 +143,21 @@ router.post("/signIn", (req, res, next) => {
     failureFlash: true,
   })(req, res, next);
 });
+
+// Check if authenticated user is an instance of HostAdmin model
+function isAdmin(req) {
+  console.log(req.isAuthenticated() && req.user instanceof HostAdmin);
+  return req.isAuthenticated() && req.user instanceof HostAdmin;
+}
+
+// // Redirect user based on their role
+// router.get("/", (req, res) => {
+//   if (isAdmin(req)) {
+//     res.redirect("/dashboard");
+//   } else {
+//     res.render("index");
+//   }
+// });
 
 // router.post("/login", (req, res, next) => {
 //   if (req.isAuthenticated()) {
@@ -205,6 +225,11 @@ router.post("/changePassword", CreatandSendRestLink);
 // Handle submission of contact form ========================================
 router.post("/contact", contactValidator, handleContactFormSubmission);
 
+// Handle booking ========================================
+
 router.post("/booking", bookingValidator, handleBookingFormSubmission);
+
+// Handle admin test ========================================
+router.post("/admin", adminValidator, adminCreationTest);
 
 module.exports = router;

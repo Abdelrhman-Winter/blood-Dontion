@@ -44,13 +44,14 @@
     <!-- ======= Top Bar ======= -->
     <div id="topbar" class="fixed-top d-flex align-items-center ">
       <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
-        <div class="contact-info d-flex align-items-center">
 
+        <div class="contact-info d-flex align-items-center">
           <i class="bi bi-envelope-fill"></i><a href="/users/profile">
             <%= user.email %>
           </a>
           <!-- <i class="bi bi-phone-fill phone-icon"></i> +2 01143363912 -->
         </div>
+
 
         <div class="cta d-none d-md-block">
           <a href="/users/logout" class="scrollto"> Sign Out </a>
@@ -66,28 +67,44 @@
         <h1 class="logo"><a href="/"><span style="color:#e4052a; font-weight: bold;">Blood </span>Donation</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href=index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <% if (host_admin) { %>
+          <nav id="navbar" class="navbar">
+            <ul>
+              <li><a class="nav-link scrollto " href="/">Home</a></li>
+              <li><a class="nav-link scrollto" href="/users/aboutUs">About Us</a></li>
+              <li><a class="nav-link scrollto" href="/dashboard">Dashboard</a></li>
+              <li class="dropdown"><a href="#"><span>More</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="/users/servicesDetails">Services</a></li>
+                  <li><a href="/users/servicesDetails">Services Details</a></li>
+                </ul>
+              </li>
+            </ul>
+            <% } else { %>
+              <nav id="navbar" class="navbar">
+                <ul>
+                  <li><a class="nav-link scrollto " href="/">Home</a></li>
+                  <li><a class="nav-link scrollto" href="/users/booking">Donate</a></li>
+                  <li><a class="nav-link scrollto" href="/users/aboutUs">About Us</a></li>
+                  <li class="dropdown"><a href="#"><span>More</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                      <li><a href="/users/servicesDetails">Services</a></li>
+                      <li><a href="/users/servicesDetails">Services Details</a></li>
+                      <li><a href="/users/profile">Profile</a></li>
+                    </ul>
+                  </li>
+                </ul>
+                <% } %>
 
-        <nav id="navbar" class="navbar">
-          <ul>
-            <li><a class="nav-link scrollto " href="/">Home</a></li>
-            <li><a class="nav-link scrollto" href="/users/booking">Donate</a></li>
-            <li><a class="nav-link scrollto" href="/users/aboutUs">About Us</a></li>
-            <li class="dropdown"><a href="#"><span>More</span> <i class="bi bi-chevron-down"></i></a>
-              <ul>
-                <li><a href="/users/servicesDetails">Services</a></li>
-                <li><a href="/users/servicesDetails">Services Details</a></li>
-                <li><a href="/users/profile">Profile</a></li>
-              </ul>
-            </li>
-          </ul>
+                  <i class="bi bi-list mobile-nav-toggle"></i>
+              </nav><!-- .navbar -->
+              <% if (!host_admin) { %>
 
-
-          <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav><!-- .navbar -->
-        <div> <a href="/users/profile" aria-expanded="false">
-            <img src="https://via.placeholder.com/300x300.png?text=Test+Image
+                <div> <a href="/users/profile" aria-expanded="false">
+                    <img src="https://via.placeholder.com/300x300.png?text=Test+Image
       " alt="mdo" width="32" height="32" class="rounded-circle" />
-          </a></div>
+                  </a></div>
+                <% } %>
       </div>
     </header><!-- End Header -->
     <% } else { %>

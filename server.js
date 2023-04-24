@@ -8,8 +8,8 @@ const dotenv = require("dotenv").config(),
   passport = require("passport"),
   app = express(),
   MongoStore = require("connect-mongo"),
-  cron = require("node-cron");
-
+  cron = require("node-cron"),
+  HostAdmin = require("./models/hostAdminModel");
 // using app.use to serve up static CSS and js files in public
 app.use("/public", express.static("public"));
 
@@ -58,10 +58,21 @@ app.use(function (req, res, next) {
   res.locals.user = req.user;
   next();
 });
+//decler the host admin
+function isAdmin(req) {
+  console.log(req.isAuthenticated() && req.user instanceof HostAdmin);
+  return req.isAuthenticated() && req.user instanceof HostAdmin;
+}
+app.use(function (req, res, next) {
+  res.locals.user = req.user;
+  res.locals.host_admin = isAdmin(req);
+  next();
+});
 
 //Routes
 app.use("/", require("./routes/index"));
 app.use("/users", require("./routes/users"));
+// app.use("/hostAdmins", require("./routes/hostAdmins"));
 
 const PORT = process.env.PORT || 3000;
 

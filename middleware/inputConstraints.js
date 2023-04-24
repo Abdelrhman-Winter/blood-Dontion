@@ -167,6 +167,12 @@ const bookingValidator = [
     .isLength({ max: 500 })
     .withMessage("Additional information must be less than 500 characters"),
 ];
+
+const adminValidator = [
+  body("adminname").notEmpty().withMessage("adminname is required"),
+  body("password").notEmpty().withMessage("password is not valid"),
+  body("hospitalName").notEmpty().withMessage("subject is required"),
+];
 // Sanitize the Name field
 const sanitizeName = [body("name").escape()];
 
@@ -182,6 +188,7 @@ module.exports = {
   passwordValidator,
   contactValidator,
   bookingValidator,
+  adminValidator,
   sanitizeName,
   sanitizeEmail,
   sanitizePassword,

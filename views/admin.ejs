@@ -1,0 +1,47 @@
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body">
+      <h1 class="text-center mb-3">
+        <i class="fas fa-user-plus"></i> Register
+      </h1>
+
+      <%- include('partials/messages') %>
+
+        <form action="/users/admin" method="POST">
+          <div class="form-group mb-3">
+            <label for="adminname">adminname</label>
+            <input type="adminname" id="adminname" name="adminname" class="form-control" placeholder="Enter adminname"
+              value="<%= typeof adminname != 'undefined' ? adminname : '' %>" />
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Create Password"
+              value="<%= typeof password != 'undefined' ? password : '' %>" />
+          </div>
+
+
+          <div class="form-group mb-3">
+            <label for="city">Enter loction</label>
+            <select name="hospitalName" id="hospitalName" class="form-control">
+              <option disabled selected value> -- select an City -- </option>
+              <option value="alexandria">Alexandria</option>
+              <option value="aswan">Aswan</option>
+              <option value="assiut">Assiut</option>
+              <option value="beheira">Beheira</option>
+              <option value="beni Suef">Beni Suef</option>
+              <option value="cairo">Cairo</option>
+              <option value="dakahlia">Dakahlia</option>
+              <option value="gharbia">Gharbia</option>
+              <option value="giza">Giza</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block mb-3" style="width: 100%;">
+            Register
+          </button>
+
+        </form>
+    </div>
+  </div>
+</div>
