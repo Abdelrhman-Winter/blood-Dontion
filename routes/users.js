@@ -29,7 +29,6 @@ const {
   handleBookingConfirmation,
 } = require("../controller/bookingController");
 const { ensureAuthenticated } = require("../middleware/auth");
-const adminCreationTest = require("../controller/adminTest");
 //Login page
 
 router.get("/signIn", (req, res) => {
@@ -113,9 +112,6 @@ router.get("/services", (req, res) => res.render("services"));
 //AboutUs page
 router.get("/servicesDetails", (req, res) => res.render("servicesDetails"));
 
-//admin test
-router.get("/admin", (req, res) => res.render("admin"));
-
 //Register handle   =======================================
 
 router.post(
@@ -184,7 +180,7 @@ router.get("/logout", (req, res, next) => {
       return next(err);
     } else {
       req.flash("success_msg", "You are logged out");
-      // req.session.destroy();
+      req.session.destroy();
       res.redirect("/users/signIn");
     }
   });
@@ -228,8 +224,5 @@ router.post("/contact", contactValidator, handleContactFormSubmission);
 // Handle booking ========================================
 
 router.post("/booking", bookingValidator, handleBookingFormSubmission);
-
-// Handle admin test ========================================
-router.post("/admin", adminValidator, adminCreationTest);
 
 module.exports = router;

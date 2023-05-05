@@ -10,6 +10,7 @@ const dotenv = require("dotenv").config(),
   MongoStore = require("connect-mongo"),
   cron = require("node-cron"),
   HostAdmin = require("./models/hostAdminModel");
+
 // using app.use to serve up static CSS and js files in public
 app.use("/public", express.static("public"));
 
@@ -28,6 +29,7 @@ app.set("view engine", "ejs");
 
 //Bodyparser
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 //express session
 app.use(
@@ -72,7 +74,8 @@ app.use(function (req, res, next) {
 //Routes
 app.use("/", require("./routes/index"));
 app.use("/users", require("./routes/users"));
-// app.use("/hostAdmins", require("./routes/hostAdmins"));
+app.use("/hostAdmins", require("./routes/hostAdmins"));
+app.use("/mainAdmin", require("./routes/mainAdmin"));
 
 const PORT = process.env.PORT || 3000;
 

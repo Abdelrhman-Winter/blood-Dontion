@@ -145,8 +145,7 @@ const deleteStaleBookings = async () => {
       subject: "Booking deletion",
       html: `
         Hi ${staleBooking.user.name},<br><br>
-        Your booking for location ${
-          staleBooking.location
+        Your booking for location ${staleBooking.location
         } on ${staleBooking.createdAt.toLocaleString()} has been automatically deleted because it was not confirmed within 24 hours of being created.<br><br>
         If you still need to make a booking, please visit our website again.<br><br>
         Thank you for your understanding<br><br>

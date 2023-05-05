@@ -1,4 +1,5 @@
 const User = require("../models/userModel");
+const HostAdmin = require("../models/hostAdminModel");
 
 // Require the express-validator module
 const { check, body } = require("express-validator");
@@ -170,8 +171,22 @@ const bookingValidator = [
 
 const adminValidator = [
   body("adminname").notEmpty().withMessage("adminname is required"),
+
   body("password").notEmpty().withMessage("password is not valid"),
-  body("hospitalName").notEmpty().withMessage("subject is required"),
+  body("hospitalName")
+    .notEmpty()
+    .withMessage("Hospital name is required")
+    .custom((value, { req }) => {
+      return HostAdmin.findOne({ hospitalName: value }).then(
+        (existingAdmin) => {
+          if (existingAdmin) {
+            return Promise.reject("This location already has an admin.");
+          }
+          return Promise.resolve();
+        }
+      );
+    })
+    .withMessage("This location already has an admin."),
 ];
 // Sanitize the Name field
 const sanitizeName = [body("name").escape()];

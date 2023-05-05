@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title> Blood Donation System </title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="/public/assets/img/title.jpg" rel="icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+
+  <!-- Template Main CSS File -->
+  <link href="/public/assets/css/admin.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/public/assets/css/style.css" rel="stylesheet">
+
+  <style>
+    .form-group {
+      padding-bottom: 30px;
+
+    }
+
+    .btn:hover {
+      background: #cb1533;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="navigation">
+      <ul>
+        <li>
+          <a href="/">
+            <span class="icon"><ion-icon name="fitness-sharp"></ion-icon></span>
+            <span class="title"> Blood Donation </span>
+          </a>
+        </li>
+        <li>
+          <a href="/mainAdmin/addNewHospitalAdmin">
+            <span class="icon"><ion-icon name="person-add-sharp"></ion-icon></span>
+            <span class="title"> Add Hospital Admin </span>
+          </a>
+        </li>
+        <li>
+          <a href="/mainAdmin/showHospitalAdmin">
+            <span class="icon"><ion-icon name="person"></ion-icon></span>
+            <span class="title"> Show All Hospital Admins </span>
+          </a>
+        </li>
+        <li>
+          <a href="/users/logout">
+            <span class="icon"><ion-icon name="log-out"></ion-icon></span>
+            <span class="title"> Logout </span>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+    <!-- main -->
+    <div class="main">
+      <div class="topbar">
+        <div class="toggle">
+          <ion-icon name="menu-outline"></ion-icon>
+        </div>
+      </div>
+
+      <div class="details">
+        <!-- Order details list -->
+        <div class="recentOrder">
+          <div class="cardHeader">
+            <h2>Add New HospitalAdmin</h2>
+            <a href="/mainAdmin/showHospitalAdmin" class="btn">View All</a>
+          </div>
+          <form action="/mainAdmin/addNewHospitalAdmin" method="POST">
+
+            <%- include('partials/messages') %>
+
+              <div class="form-group mb-3">
+                <label for="adminname">Adminname</label>
+                <input type="adminname" id="adminname" name="adminname" class="form-control"
+                  placeholder="Enter adminname" value="<%= typeof adminname != 'undefined' ? adminname : '' %>" />
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Create Password"
+                  value="<%= typeof password != 'undefined' ? password : '' %>" />
+              </div>
+
+
+              <div class="form-group mb-3">
+                <label for="city">Enter Hospital Name</label>
+                <select name="hospitalName" id="hospitalName" class="form-control">
+                  <option disabled selected value> -- select an Loction -- </option>
+                  <option value="loction1"> loction1 </option>
+                  <option value="loction2"> loction2 </option>
+                  <option value="loction3"> loction3 </option>
+                  <option value="loction4"> loction4 </option>
+                  <option value="loction5"> loction5 </option>
+                  <option value="loction6"> loction6 </option>
+                  <option value="loction7"> loction7 </option>
+                  <option value="loction8"> loction8 </option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block mb-3" style="width: 100%;  height: 50px;
+              ">
+                Create
+              </button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <script>
+    //MenuToggle 
+    let toggle = document.querySelector('.toggle');
+    let navigation = document.querySelector('.navigation');
+    let main = document.querySelector('.main');
+
+    toggle.onclick = function () {
+      navigation.classList.toggle('active');
+      main.classList.toggle('active');
+    }
+
+    //add hovered class in selected list item
+    let list = document.querySelectorAll('.navigation li');
+    function avtiveLink() {
+      list.forEach((item) =>
+        item.classList.remove('hovered'));
+      this.classList.add('hovered');
+    }
+    list.forEach((item) =>
+      item.addEventListener('mouseover', avtiveLink));
+  </script>
+</body>
+
+</html>

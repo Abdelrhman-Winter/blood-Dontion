@@ -50,6 +50,9 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  donateId: {
+    type: String,
+  }
 });
 
 // Pre>to hash password before Save

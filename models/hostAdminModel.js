@@ -21,6 +21,8 @@ const HostAdminSchema = new mongoose.Schema({
   },
 });
 
+
+
 // Pre>to hash password before Save
 HostAdminSchema.pre("save", async function (next) {
   if (this.isModified("password")) {
@@ -34,6 +36,5 @@ HostAdminSchema.statics.findByAdminname = function (adminname) {
   return this.findOne({ adminname: adminname });
 };
 
-const HostAdmin = mongoose.model("HostAdmin", HostAdminSchema);
+module.exports = mongoose.model("HostAdmin", HostAdminSchema);
 
-module.exports = HostAdmin;

@@ -70,6 +70,7 @@ function registerHadling(req, res) {
       birthMonth,
       birthYear,
       bloodType,
+      donateId: ((Date.now() + 1 * 60 * 1000).toString()).substring(0, 5)
     });
 
     //Creat new user
