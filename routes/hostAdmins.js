@@ -57,9 +57,10 @@ router.get("/request-admin", async (req, res, next) => {
       requests: false,
     }).populate({
       path: "user",
-      select: "firstName lastName phone city bloodType email address requests",
+      select: "firstName lastName phone city bloodType email address requests ",
     });
-    console.log(user);
+
+    console.log(`111111${user}1111111111`);
 
     const num_bags = await BookingModel.find({
       location: req.user.hospitalName,

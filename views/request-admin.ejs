@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title> Blood Donation System </title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    <title> Blood Donation System </title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
- <!-- Favicons -->
- <link href="/public/assets/img/title.jpg" rel="icon">
+    <!-- Favicons -->
+    <link href="/public/assets/img/title.jpg" rel="icon">
 
- <!-- Template Main CSS File -->
- <link href="/public/assets/css/admin.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/public/assets/css/admin.css" rel="stylesheet">
 </head>
+
 <body>
-    
+
     <div class="container">
         <div class="navigation">
             <ul>
@@ -37,18 +39,18 @@
                         <span class="title"> Request </span>
                     </a>
                 </li>
-                 <li>
+                <li>
                     <a href="/hostAdmins/bags">
                         <span class="icon"><ion-icon name="flask"></ion-icon></span>
                         <span class="title"> Blood Bags </span>
                     </a>
-                </li> 
-                 <li>
+                </li>
+                <li>
                     <a href="/hostAdmins/report">
                         <span class="icon"><ion-icon name="albums"></ion-icon></span>
                         <span class="title"> Report </span>
                     </a>
-                </li> 
+                </li>
                 <li>
                     <a href="/hostAdmins/profile">
                         <span class="icon"><ion-icon name="accessibility-sharp"></ion-icon></span>
@@ -82,7 +84,9 @@
             <div class="cardBox">
                 <div class="card">
                     <div>
-                        <div class="numbers"><%=num_donors%></div>
+                        <div class="numbers">
+                            <%=num_donors%>
+                        </div>
                         <div class="cardName">Donors</div>
                     </div>
                     <div class="iconBox">
@@ -91,7 +95,9 @@
                 </div>
                 <div class="card">
                     <div>
-                        <div class="numbers"><%=num_bags%></div>
+                        <div class="numbers">
+                            <%=num_bags%>
+                        </div>
                         <div class="cardName">Blood Bags</div>
                     </div>
                     <div class="iconBox">
@@ -100,7 +106,9 @@
                 </div>
                 <div class="card">
                     <div>
-                        <div class="numbers"><%=num_req%></div>
+                        <div class="numbers">
+                            <%=num_req%>
+                        </div>
                         <div class="cardName">Request</div>
                     </div>
                     <div class="iconBox">
@@ -110,7 +118,7 @@
 
             </div>
 
-           
+
             <div class="details">
                 <!-- Order details list -->
                 <div class="recentOrder">
@@ -123,7 +131,6 @@
                             <tr>
                                 <td>ID</td>
                                 <td>Name</td>
-                                <td>Hospital</td>
                                 <td>Information</td>
                                 <td>Message</td>
                                 <td>Reject</td>
@@ -132,30 +139,43 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <% user.forEach((result,index) => { %>
+                            <% user.forEach((result,index)=> { %>
                                 <tr>
-                                    <td><%=index+1%></td>
-                                    <td><%=result.user.firstName%> <%=result.user.lastName%></td>
-                                    <td><%=result.location%></td>
-                                    <td><%=result.user.email%> <br><br> <%=result.user.phone%> <br><br><%=result.user.address%> </td>
-                                    <td>I Want Donate My Blood Type is: <%=result.user.bloodType%></td>
                                     <td>
-                                        
+                                        <%=index+1%>
+                                    </td>
+                                    <td>
+                                        <%=result.user.firstName%>
+                                            <%=result.user.lastName%>
+                                    </td>
+
+                                    <td>
+                                        <%=result.user.email%> <br><br>
+                                            <%=result.user.phone%> <br><br>
+                                                <%=result.user.address%> <br><br>
+                                                    <%=result.user.bloodType%>
+                                    </td>
+                                    <td>
+                                        <%=result.additionalInfo%>
+                                    </td>
+                                    <td>
+
                                         <form action="/hostAdmins/request-admin" method="POST">
-                                            <button class="btn" name="rejBtn"  value="<%=result.user._id%>"><a  class="text">Reject</a></button>
+                                            <button class="btn" name="rejBtn" value="<%=result.user._id%>"><a
+                                                    class="text">Reject</a></button>
                                         </form>
                                     </td>
                                     <td>
-                                        
+
                                         <form action="/hostAdmins/request-admin" method="post">
-                                        <textarea name="msg" id="" cols="30" rows="10"></textarea><br>
-                                        <button class="btn" name="id"><a class="text">Accept</a></button>                                            
-                                        <input type="hidden" name="email" value="<%=result.user.email%>">
+                                            <textarea name="msg" id="" cols="30" rows="10"></textarea><br>
+                                            <button class="btn" name="id"><a class="text">Accept</a></button>
+                                            <input type="hidden" name="email" value="<%=result.user.email%>">
                                         </form>
-                                       
+
                                     </td>
                                 </tr>
-                            <% }); %>
+                                <% }); %>
                         </tbody>
                     </table>
                 </div>
@@ -172,20 +192,21 @@
         let navigation = document.querySelector('.navigation');
         let main = document.querySelector('.main');
 
-        toggle.onclick = function(){
+        toggle.onclick = function () {
             navigation.classList.toggle('active');
             main.classList.toggle('active');
         }
 
         //add hovered class in selected list item
         let list = document.querySelectorAll('.navigation li');
-        function avtiveLink(){
+        function avtiveLink() {
             list.forEach((item) =>
-            item.classList.remove('hovered'));
+                item.classList.remove('hovered'));
             this.classList.add('hovered');
         }
         list.forEach((item) =>
-        item.addEventListener('mouseover',avtiveLink));
+            item.addEventListener('mouseover', avtiveLink));
     </script>
 </body>
+
 </html>

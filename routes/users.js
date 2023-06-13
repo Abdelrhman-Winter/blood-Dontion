@@ -225,4 +225,9 @@ router.post("/contact", contactValidator, handleContactFormSubmission);
 
 router.post("/booking", bookingValidator, handleBookingFormSubmission);
 
+//readmore+++++++++++++++++++++++++++++++++++
+router.get("/readMore", (req, res) =>
+  res.render("readMore", { layout: false })
+);
+
 module.exports = router;
