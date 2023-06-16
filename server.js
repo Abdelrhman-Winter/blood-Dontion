@@ -76,6 +76,9 @@ app.use("/", require("./routes/index"));
 app.use("/users", require("./routes/users"));
 app.use("/hostAdmins", require("./routes/hostAdmins"));
 app.use("/mainAdmin", require("./routes/mainAdmin"));
+app.all("*", (req, res, next) => {
+  next(res.render('err', { layout: false }));
+});
 
 const PORT = process.env.PORT || 3000;
 

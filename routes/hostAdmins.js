@@ -60,7 +60,6 @@ router.get("/request-admin", async (req, res, next) => {
       select: "firstName lastName phone city bloodType email address requests ",
     });
 
-    console.log(`111111${user}1111111111`);
 
     const num_bags = await BookingModel.find({
       location: req.user.hospitalName,
@@ -91,6 +90,7 @@ router.post("/request-admin", async (req, res, next) => {
   if (req.user && req.user.role == "admin" && req.isAuthenticated()) {
     const id = req.body.id;
     const rejBtn = req.body.rejBtn;
+    console.log('bodyyy' + req.body.idUser);
     if (req.body.email) {
       const transporter = nodemailer.createTransport({
         service: "gmail",
@@ -113,7 +113,8 @@ router.post("/request-admin", async (req, res, next) => {
           );
         } else {
           console.log(`Email sent to ${req.body.email}: `, info.response);
-          const user = await BookingModel.findOneAndUpdate({ requests: true });
+          const user = await BookingModel.findOneAndUpdate({ _id: req.body.idUser }, { requests: true });
+          console.log("useris " + user)
           return res.redirect("/hostAdmins/request-admin");
           /////////////////////////////////////
         }
@@ -150,7 +151,7 @@ router.post("/request-admin", async (req, res, next) => {
           /////////////////////////////////////
         }
       });
-      const data = await BookingModel.findOneAndRemove(id);
+      const data = await BookingModel.findByIdAndRemove(rejBtn);
       if (!data) {
         console.log("err");
       }

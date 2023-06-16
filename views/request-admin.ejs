@@ -161,8 +161,11 @@
                                     <td>
 
                                         <form action="/hostAdmins/request-admin" method="POST">
-                                            <button class="btn" name="rejBtn" value="<%=result.user._id%>"><a
-                                                    class="text">Reject</a></button>
+                                            <button class="btn">
+                                                Reject
+                                            </button>
+                                            <input type="hidden" name="rejBtn" value="<%=result.id%>">
+
                                         </form>
                                     </td>
                                     <td>
@@ -171,6 +174,8 @@
                                             <textarea name="msg" id="" cols="30" rows="10"></textarea><br>
                                             <button class="btn" name="id"><a class="text">Accept</a></button>
                                             <input type="hidden" name="email" value="<%=result.user.email%>">
+                                            <input type="hidden" name="idUser" value="<%=result.id%>">
+
                                         </form>
 
                                     </td>
