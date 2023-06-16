@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title> Blood Donation System </title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    <title> Blood Donation System </title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
- <!-- Favicons -->
- <link href="/public/assets/img/title.jpg" rel="icon">
+    <!-- Favicons -->
+    <link href="/public/assets/img/title.jpg" rel="icon">
 
- <!-- Template Main CSS File -->
- <link href="/public/assets/css/admin.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="/public/assets/css/admin.css" rel="stylesheet">
 </head>
+
 <body>
-    
+
     <div class="container">
         <div class="navigation">
             <ul>
@@ -37,18 +39,18 @@
                         <span class="title"> Request </span>
                     </a>
                 </li>
-                 <li>
+                <li>
                     <a href="/hostAdmins/bags">
                         <span class="icon"><ion-icon name="flask"></ion-icon></span>
                         <span class="title"> Blood Bags </span>
                     </a>
-                </li> 
-                 <li>
+                </li>
+                <li>
                     <a href="/hostAdmins/report">
                         <span class="icon"><ion-icon name="albums"></ion-icon></span>
                         <span class="title"> Report </span>
                     </a>
-                </li> 
+                </li>
                 <li>
                     <a href="/hostAdmins/profile">
                         <span class="icon"><ion-icon name="accessibility-sharp"></ion-icon></span>
@@ -82,7 +84,9 @@
             <div class="cardBox">
                 <div class="card">
                     <div>
-                        <div class="numbers"><%=num_donors%></div>
+                        <div class="numbers">
+                            <%=num_donors%>
+                        </div>
                         <div class="cardName">Donors</div>
                     </div>
                     <div class="iconBox">
@@ -91,7 +95,9 @@
                 </div>
                 <div class="card">
                     <div>
-                        <div class="numbers"><%=num_bags%></div>
+                        <div class="numbers">
+                            <%=num_bags%>
+                        </div>
                         <div class="cardName">Blood Bags</div>
                     </div>
                     <div class="iconBox">
@@ -100,7 +106,9 @@
                 </div>
                 <div class="card">
                     <div>
-                        <div class="numbers"><%=num_req%></div>
+                        <div class="numbers">
+                            <%=num_req%>
+                        </div>
                         <div class="cardName">Request</div>
                     </div>
                     <div class="iconBox">
@@ -109,7 +117,7 @@
                 </div>
             </div>
 
-           
+
             <div class="details">
                 <!-- Order details list -->
                 <div class="recentOrder">
@@ -124,22 +132,39 @@
                                 <td>Name</td>
                                 <td>Blood Group</td>
                                 <td>Information</td>
-                                <td>Previous Donation</td>
                             </tr>
                         </thead>
                         <tbody>
-                            <% user.forEach((result,index) => { %>
-                            <tr>
-                                <td><%=result.user.donateId%></td>
-                                    <td><%=result.user.firstName%> <%=result.user.lastName%></td>
-                                    <td><%=result.user.city%></td>
-                                    <td><%=result.user.phone%></td>
-                                    <td><%=result.user.bloodType%></td>
-                            </tr>
-                            <% }); %>
+                            <% user.forEach((result,index)=> { %>
+                                <tr>
+                                    <td>
+                                        <% if (result.user && result.user.donateId) { %>
+                                            <%= result.user.donateId %>
+                                                <% } %>
+                                    </td>
+                                    <td>
+                                        <% if (result.user && result.user.firstName&&result.user.lastName) { %>
+                                            <%=result.user.firstName%>
+                                                <%=result.user.lastName%>
+                                                    <% } %>
+                                    </td>
+                                    <td>
+                                        <% if (result.user && result.user.bloodType) { %>
+                                            <%=result.user.bloodType%>
+                                                <% } %>
+                                    </td>
+                                    <td>
+                                        <% if (result.user && result.user.city &&result.user.phone) { %>
+                                            <%=result.user.city%> <br>
+                                                <%=result.user.phone%>
+                                                    <% } %>
+                                    </td>
+
+                                </tr>
+                                <% }); %>
                         </tbody>
                     </table>
-                </div>   
+                </div>
             </div>
         </div>
     </div>
@@ -153,20 +178,21 @@
         let navigation = document.querySelector('.navigation');
         let main = document.querySelector('.main');
 
-        toggle.onclick = function(){
+        toggle.onclick = function () {
             navigation.classList.toggle('active');
             main.classList.toggle('active');
         }
 
         //add hovered class in selected list item
         let list = document.querySelectorAll('.navigation li');
-        function avtiveLink(){
+        function avtiveLink() {
             list.forEach((item) =>
-            item.classList.remove('hovered'));
+                item.classList.remove('hovered'));
             this.classList.add('hovered');
         }
         list.forEach((item) =>
-        item.addEventListener('mouseover',avtiveLink));
+            item.addEventListener('mouseover', avtiveLink));
     </script>
 </body>
+
 </html>
